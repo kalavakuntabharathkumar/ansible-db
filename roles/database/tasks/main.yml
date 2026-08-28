@@ -1,0 +1,19 @@
+---
+- name: Install PostgreSQL
+  ansible.builtin.apt:
+    name: "{{ postgres_package }}"
+    state: present
+    update_cache: true
+
+- name: Ensure PostgreSQL is enabled and started
+  ansible.builtin.service:
+    name: postgresql
+    state: started
+    enabled: true
+
+- name: Template PostgreSQL settings
+  ansible.builtin.template:
+    src: postgresql.conf.j2
+    dest: /etc/postgresql/14/main/conf.d/app-managed.conf
+    mode: "0644"
+  notify: Restart PostgreSQL

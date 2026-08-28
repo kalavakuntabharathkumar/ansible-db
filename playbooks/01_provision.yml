@@ -1,0 +1,6 @@
+---
+- name: Provision database servers
+  hosts: db_servers
+  become: true
+  roles:
+    - database
