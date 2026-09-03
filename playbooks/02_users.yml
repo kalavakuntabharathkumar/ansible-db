@@ -1,0 +1,6 @@
+---
+- name: Create database users
+  hosts: db_servers
+  become: true
+  roles:
+    - users

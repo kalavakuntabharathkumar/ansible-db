@@ -1,0 +1,17 @@
+---
+- name: Ensure application database exists
+  community.postgresql.postgresql_db:
+    name: "{{ db_name }}"
+    state: present
+    become: true
+    become_user: postgres
+
+- name: Ensure application user exists
+  community.postgresql.postgresql_user:
+    name: "{{ db_admin_user }}"
+    password: "{{ db_admin_password }}"
+    db: "{{ db_name }}"
+    priv: "{{ db_name }}:ALL"
+    state: present
+    become: true
+    become_user: postgres
