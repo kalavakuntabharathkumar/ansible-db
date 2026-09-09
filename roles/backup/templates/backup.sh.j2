@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+pg_dump "{{ db_name }}" > "{{ backup_dir }}/{{ db_name }}_$(date +%F).sql"

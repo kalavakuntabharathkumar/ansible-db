@@ -1,0 +1,6 @@
+---
+- name: Schedule database backups
+  hosts: db_servers
+  become: true
+  roles:
+    - backup

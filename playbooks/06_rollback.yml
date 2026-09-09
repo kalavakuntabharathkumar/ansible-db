@@ -1,0 +1,7 @@
+---
+- name: Restore database from a dump
+  hosts: db_servers
+  become: true
+  tasks:
+    - name: Run rollback script
+      ansible.builtin.script: ../scripts/rollback.sh
