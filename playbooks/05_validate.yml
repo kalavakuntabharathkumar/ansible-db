@@ -1,0 +1,11 @@
+---
+- name: Validate database configuration
+  hosts: db_servers
+  become: true
+  tasks:
+    - name: Check PostgreSQL service
+      ansible.builtin.service_facts:
+
+    - name: Assert PostgreSQL is running
+      ansible.builtin.assert:
+        that: "'postgresql.service' in ansible_facts.services"

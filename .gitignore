@@ -1,0 +1,7 @@
+*.retry
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+.vault_password_file
